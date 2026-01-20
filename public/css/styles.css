@@ -159,3 +159,37 @@ main {
     grid-template-columns: repeat(4, 1fr);
   }
 }
+/* ---------- VEHICLE DETAIL ---------- */
+.vehicle-detail {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.vehicle-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.vehicle-info {
+  background-color: #ffffff;
+  padding: 1rem;
+}
+
+.vehicle-info h2 {
+  margin-top: 0;
+}
+
+.vehicle-info p {
+  margin: 0.5rem 0;
+}
+
+@media screen and (min-width: 768px) {
+  .vehicle-detail {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
