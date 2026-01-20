@@ -1,12 +1,13 @@
 const Util = {}
-const jwt = require("jsonwebtoken")
 
+/* ---------- ERROR HANDLER WRAPPER ---------- */
 Util.handleErrors = (fn) => {
   return function (req, res, next) {
     Promise.resolve(fn(req, res, next)).catch(next)
   }
 }
 
+/* ---------- VEHICLE DETAIL BUILDER ---------- */
 Util.buildVehicleDetail = function (vehicle) {
   const price = new Intl.NumberFormat("en-US", {
     style: "currency",
