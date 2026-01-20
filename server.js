@@ -1,21 +1,37 @@
-const express = require("express");
-const expressLayouts = require("express-ejs-layouts");
-const app = express();
+const express = require("express")
+const expressLayouts = require("express-ejs-layouts")
+const app = express()
 
-// View engine
-app.use(expressLayouts);
-app.set("view engine", "ejs");
-app.set("layout", "layouts/layout");
+/* ---------- VIEW ENGINE ---------- */
+app.use(expressLayouts)
+app.set("view engine", "ejs")
+app.set("layout", "layouts/layout")
 
-// Static files
-app.use(express.static("public"));
+/* ---------- STATIC FILES ---------- */
+app.use(express.static("public"))
 
-// Routes
-const staticRoutes = require("./routes/static");
-app.use("/", staticRoutes);
+/* ---------- ROUTES ---------- */
+const staticRoutes = require("./routes/static")
+const inventoryRoutes = require("./routes/inventoryRoute")
+const errorRoutes = require("./routes/errorRoute")
 
-// Server
-const PORT = process.env.PORT || 5500;
+app.use("/", staticRoutes)
+app.use("/inv", inventoryRoutes)
+app.use("/", errorRoutes)
+
+/* ---------- 404 HANDLER ---------- */
+app.use((req, res, next) => {
+  const error = new Error("Page Not Found")
+  error.status = 404
+  next(error)
+})
+
+/* ---------- GLOBAL ERROR HANDLER ---------- */
+const { errorHandler } = require("./utilities/errorHandler")
+app.use(errorHandler)
+
+/* ---------- SERVER ---------- */
+const PORT = process.env.PORT || 5500
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+  console.log(`Server running on port ${PORT}`)
+})
