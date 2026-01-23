@@ -1,13 +1,15 @@
 const express = require("express")
-const router = express.Router()
+const router = new express.Router()
+const invController = require("../controllers/invController")
+const utilities = require("../utilities")
 
-const invController = require(
-  require("path").join(process.cwd(), "controllers/invController")
-)
-const utilities = require(
-  require("path").join(process.cwd(), "utilities")
+// Inventory by classification
+router.get(
+  "/type/:classificationId",
+  utilities.handleErrors(invController.buildByClassificationId)
 )
 
+// Inventory detail
 router.get(
   "/detail/:inv_id",
   utilities.handleErrors(invController.buildInventoryDetail)
