@@ -1,23 +1,31 @@
-const path = require("path")
+const pool = require("../database")
 
-const pool = require(
-  path.join(process.cwd(), "database")
-)
+/* ***************************
+ * Get inventory by classification
+ * ************************** */
+async function getInventoryByClassificationId(classification_id) {
+  const data = await pool.query(
+    `SELECT * FROM public.inventory AS i
+     JOIN public.classification AS c
+     ON i.classification_id = c.classification_id
+     WHERE i.classification_id = $1`,
+    [classification_id]
+  )
+  return data.rows
+}
 
+/* ***************************
+ * Get inventory item by ID
+ * ************************** */
 async function getInventoryById(inv_id) {
-  try {
-    const sql = `
-      SELECT *
-      FROM inventory
-      WHERE inv_id = $1
-    `
-    const data = await pool.query(sql, [inv_id])
-    return data.rows[0]
-  } catch (error) {
-    throw error
-  }
+  const data = await pool.query(
+    "SELECT * FROM public.inventory WHERE inv_id = $1",
+    [inv_id]
+  )
+  return data.rows
 }
 
 module.exports = {
+  getInventoryByClassificationId,
   getInventoryById,
 }
