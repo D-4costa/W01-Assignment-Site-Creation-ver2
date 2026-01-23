@@ -1,5 +1,11 @@
-const invModel = require("../models/inventory-model")
-const utilities = require("../utilities")
+const path = require("path")
+
+const invModel = require(
+  path.join(process.cwd(), "models/inventory-model")
+)
+const utilities = require(
+  path.join(process.cwd(), "utilities")
+)
 
 const invCont = {}
 
