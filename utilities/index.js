@@ -24,7 +24,12 @@ Util.buildClassificationGrid = async function (data) {
               ${vehicle.inv_make} ${vehicle.inv_model}
             </a>
           </h2>
-          <span>$${new Intl.NumberFormat("en-US").format(vehicle.inv_price)}</span>
+          <span>
+            ${new Intl.NumberFormat("en-US", {
+              style: "currency",
+              currency: "USD",
+            }).format(vehicle.inv_price)}
+          </span>
         </div>
       </li>`
   })
@@ -36,21 +41,29 @@ Util.buildClassificationGrid = async function (data) {
 /* ***************************
  * Build vehicle detail
  * ************************** */
-Util.buildVehicleDetail = async function (vehicle) {
+Util.buildVehicleDetail = function (vehicle) {
+  if (!vehicle) {
+    return "<p>Vehicle information not available.</p>"
+  }
+
+  const price = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(vehicle.inv_price)
+
+  const miles = new Intl.NumberFormat("en-US").format(vehicle.inv_miles)
+
   return `
     <section class="vehicle-detail">
-      <img src="${vehicle.inv_image}"
-           alt="Image of ${vehicle.inv_make} ${vehicle.inv_model}">
+      <div class="vehicle-image">
+        <img src="${vehicle.inv_image}"
+             alt="Image of ${vehicle.inv_make} ${vehicle.inv_model}">
+      </div>
+
       <div class="vehicle-info">
-        <h2>${vehicle.inv_make} ${vehicle.inv_model}</h2>
-        <p class="price">
-          <strong>Price:</strong>
-          $${new Intl.NumberFormat("en-US").format(vehicle.inv_price)}
-        </p>
-        <p>
-          <strong>Mileage:</strong>
-          ${new Intl.NumberFormat("en-US").format(vehicle.inv_miles)} miles
-        </p>
+        <h2>${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model}</h2>
+        <p><strong>Price:</strong> ${price}</p>
+        <p><strong>Mileage:</strong> ${miles} miles</p>
         <p><strong>Description:</strong> ${vehicle.inv_description}</p>
         <p><strong>Color:</strong> ${vehicle.inv_color}</p>
       </div>
@@ -59,5 +72,6 @@ Util.buildVehicleDetail = async function (vehicle) {
 }
 
 module.exports = Util
+
 
 
