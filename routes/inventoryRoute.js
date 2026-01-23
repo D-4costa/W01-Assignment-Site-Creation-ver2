@@ -1,7 +1,12 @@
 const express = require("express")
-const router = new express.Router()
-const invController = require("../controllers/invController")
-const utilities = require("../utilities")
+const router = express.Router()
+
+const invController = require(
+  require("path").join(process.cwd(), "controllers/invController")
+)
+const utilities = require(
+  require("path").join(process.cwd(), "utilities")
+)
 
 router.get(
   "/detail/:inv_id",
