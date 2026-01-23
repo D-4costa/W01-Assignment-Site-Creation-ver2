@@ -1,5 +1,7 @@
 const express = require("express")
 const expressLayouts = require("express-ejs-layouts")
+const path = require("path")
+
 const app = express()
 
 /* ---------- VIEW ENGINE ---------- */
@@ -8,12 +10,12 @@ app.set("view engine", "ejs")
 app.set("layout", "layouts/layout")
 
 /* ---------- STATIC FILES ---------- */
-app.use(express.static("public"))
+app.use(express.static(path.join(process.cwd(), "public")))
 
 /* ---------- ROUTES ---------- */
-const staticRoutes = require("./routes/static")
-const inventoryRoutes = require("./routes/inventoryRoute")
-const errorRoutes = require("./routes/errorRoute")
+const staticRoutes = require(path.join(process.cwd(), "routes/static"))
+const inventoryRoutes = require(path.join(process.cwd(), "routes/inventoryRoute"))
+const errorRoutes = require(path.join(process.cwd(), "routes/errorRoute"))
 
 app.use("/", staticRoutes)
 app.use("/inv", inventoryRoutes)
@@ -27,7 +29,9 @@ app.use((req, res, next) => {
 })
 
 /* ---------- GLOBAL ERROR HANDLER ---------- */
-const { errorHandler } = require("./utilities/errorHandler")
+const { errorHandler } = require(
+  path.join(process.cwd(), "utilities/errorHandler")
+)
 app.use(errorHandler)
 
 /* ---------- SERVER ---------- */
