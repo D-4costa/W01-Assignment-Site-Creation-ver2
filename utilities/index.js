@@ -37,3 +37,4 @@ Util.buildVehicleDetail = function (vehicle) {
 }
 
 module.exports = Util
+
