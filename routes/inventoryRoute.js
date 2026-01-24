@@ -19,4 +19,6 @@ router.get(
   utilities.handleErrors(invController.buildInventoryDetail)
 )
 
+router.post("/update/", utilities.handleErrors(invController.updateInventory));
+
 module.exports = router
