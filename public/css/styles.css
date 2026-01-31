@@ -264,7 +264,9 @@ main {
   overflow: hidden;
   background: #ffffff;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .inv-card_link:hover,
@@ -287,7 +289,11 @@ main {
   right: 0;
   bottom: 0;
   padding: 12px 16px;
-  background: linear-gradient(180deg, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.55) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
   color: #ffffff;
 }
 
@@ -295,7 +301,7 @@ main {
   margin: 0 0 4px 0;
   font-size: 1.25rem;
   font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .inv-card_price {
@@ -322,5 +328,219 @@ main {
 
   .inv-card_img {
     height: 230px;
+  }
+}
+
+/* ---------- MANAGEMENT PAGE ---------- */
+.management-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.management-container h1 {
+  color: #1a1a1a;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  border-bottom: 3px solid #333333;
+  padding-bottom: 1rem;
+}
+
+.management-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.management-links li {
+  margin: 0;
+}
+
+.management-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, #333333 0%, #555555 100%);
+  color: #ffffff;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.management-links a:hover,
+.management-links a:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+  outline: none;
+}
+
+@media screen and (min-width: 600px) {
+  .management-links {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------- FORM STYLES ---------- */
+.input-box {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.input-box h1 {
+  color: #1a1a1a;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  border-bottom: 3px solid #333333;
+  padding-bottom: 1rem;
+}
+
+.input-box label {
+  display: block;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  color: #333333;
+}
+
+.input-box label input,
+.input-box label textarea,
+.input-box label select {
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  border: 2px solid #dddddd;
+  border-radius: 6px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.input-box label input:focus,
+.input-box label textarea:focus,
+.input-box label select:focus {
+  outline: none;
+  border-color: #333333;
+  box-shadow: 0 0 0 3px rgba(51, 51, 51, 0.1);
+}
+
+.input-box label textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.fine-print {
+  display: block;
+  font-size: 0.85rem;
+  color: #666666;
+  margin-top: 0.3rem;
+  font-weight: normal;
+}
+
+.input-box input[type="submit"] {
+  background: linear-gradient(135deg, #333333 0%, #555555 100%);
+  color: #ffffff;
+  padding: 0.875rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-top: 1rem;
+  display: inline-block;
+  min-width: fit-content;
+}
+
+.input-box input[type="submit"]:hover,
+.input-box input[type="submit"]:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+  outline: none;
+}
+
+.input-box input[type="submit"]:active {
+  transform: translateY(0);
+}
+
+/* ---------- ERROR MESSAGES ---------- */
+.notice {
+  list-style: none;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  background-color: #fff3cd;
+  border-left: 4px solid #ffc107;
+  border-radius: 4px;
+  color: #856404;
+}
+
+.notice li {
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+}
+
+.notice li:before {
+  content: "⚠ ";
+  font-weight: bold;
+}
+
+@media screen and (min-width: 600px) {
+  .input-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .input-box h1 {
+    grid-column: 1 / -1;
+  }
+
+  .input-box label {
+    margin-bottom: 0;
+  }
+
+  .input-box input[type="submit"] {
+    grid-column: 1 / -1;
+    width: auto;
+    max-width: 200px;
+  }
+
+  .notice {
+    grid-column: 1 / -1;
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .management-container {
+    padding: 3rem;
+  }
+
+  .input-box {
+    padding: 3rem;
+  }
+
+  .input-box h1,
+  .management-container h1 {
+    font-size: 2.5rem;
   }
 }
