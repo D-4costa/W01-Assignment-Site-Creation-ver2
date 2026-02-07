@@ -321,6 +321,9 @@ main {
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .inv-card_link:hover,
@@ -348,6 +351,11 @@ main {
     rgba(0, 0, 0, 0) 0%,
     rgba(0, 0, 0, 0.55) 100%
   );
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
   color: #ffffff;
 }
 
@@ -355,6 +363,7 @@ main {
   margin: 0 0 4px 0;
   font-size: 1.25rem;
   font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 

@@ -36,6 +36,15 @@ app.use(
   }),
 );
 
+/* ---------- SESSION MIDDLEWARE ---------- */
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: true,
+  }),
+);
+
 /* ---------- GLOBAL NAV MIDDLEWARE ---------- */
 app.use(async (req, res, next) => {
   try {
@@ -44,6 +53,7 @@ app.use(async (req, res, next) => {
   } catch (e) {
     // Fallback nav if DB fails
     res.locals.nav =
+      "<ul>" + '<li><a href="/" title="Home page">Home</a></li>' + "</ul>";
       "<ul>" + '<li><a href="/" title="Home page">Home</a></li>' + "</ul>";
   }
   next();
