@@ -1,0 +1,42 @@
+<section class="account-management">
+  <%- messages() %>
+  <h1><%- title %></h1>
+  <% if (errors) { %>
+      <ul class="notice">
+     <% errors.array().forEach(error => { %>
+       <li><%= error.msg %></li>
+    <%  }) %>
+     </ul>
+    <% } %>
+
+  <% if(accountData) { %>
+    <div class="account-info-card">
+      <h2>Welcome, <%- accountData.account_firstname %></h2>
+      <p class="account-email"><%- accountData.account_email %></p>
+    </div>
+
+    <div class="account-actions">
+      <h3>Account Settings</h3>
+      <ul class="action-list">
+        <li>
+          <a href="/account/update/<%- accountData.account_id %>" class="action-link action-primary">
+            <span class="action-icon">⚙️</span>
+            <span class="action-text">Update Account Information</span>
+          </a>
+        </li>
+      </ul>
+
+      <% if(accountData.account_type == "Employee" || accountData.account_type == "Admin") { %>
+        <h3>Management Tools</h3>
+        <ul class="action-list">
+          <li>
+            <a href="/inv/" class="action-link action-secondary">
+              <span class="action-icon">📦</span>
+              <span class="action-text">Manage Inventory</span>
+            </a>
+          </li>
+        </ul>
+      <% } %>
+    </div>
+  <% } %>
+</section>

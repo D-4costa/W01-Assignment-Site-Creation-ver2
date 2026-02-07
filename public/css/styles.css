@@ -67,12 +67,66 @@ main {
   min-width: 200px;
 }
 
-.account-link {
+#tools a {
   color: #ffffff;
   font-weight: bold;
   white-space: nowrap;
 }
 
+.header-tools {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.tool-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.account-link {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.account-link:hover,
+.account-link:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: #ffffff;
+  outline: none;
+}
+
+.logout-link {
+  background-color: #ff6b6b;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.logout-link:hover,
+.logout-link:focus {
+  background-color: #ff5252;
+  box-shadow: 0 4px 8px rgba(255, 107, 107, 0.3);
+  outline: none;
+}
+
+.login-link {
+  background-color: #4dabf7;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.login-link:hover,
+.login-link:focus {
+  background-color: #339af0;
+  box-shadow: 0 4px 8px rgba(77, 171, 247, 0.3);
+  outline: none;
+}
 /* ---------- NAV ---------- */
 .main-nav ul {
   list-style: none;
@@ -264,7 +318,9 @@ main {
   overflow: hidden;
   background: #ffffff;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .inv-card_link:hover,
@@ -287,7 +343,11 @@ main {
   right: 0;
   bottom: 0;
   padding: 12px 16px;
-  background: linear-gradient(180deg, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.55) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
   color: #ffffff;
 }
 
@@ -295,7 +355,7 @@ main {
   margin: 0 0 4px 0;
   font-size: 1.25rem;
   font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .inv-card_price {
@@ -322,5 +382,561 @@ main {
 
   .inv-card_img {
     height: 230px;
+  }
+}
+
+/* ---------- MANAGEMENT PAGE ---------- */
+.management-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.management-container h1 {
+  color: #1a1a1a;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  border-bottom: 3px solid #333333;
+  padding-bottom: 1rem;
+}
+
+.management-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.management-links li {
+  margin: 0;
+}
+
+.management-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, #333333 0%, #555555 100%);
+  color: #ffffff;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.management-links a:hover,
+.management-links a:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+  outline: none;
+}
+
+@media screen and (min-width: 600px) {
+  .management-links {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------- FORM STYLES ---------- */
+.input-box {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.input-box h1 {
+  color: #1a1a1a;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  border-bottom: 3px solid #333333;
+  padding-bottom: 1rem;
+}
+
+.input-box label {
+  display: block;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  color: #333333;
+}
+
+.password-wrapper {
+  position: relative;
+  margin-top: 0.5rem;
+}
+
+.input-box label input,
+.input-box label textarea,
+.input-box label select {
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  border: 2px solid #dddddd;
+  border-radius: 6px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 3.5rem;
+  margin-top: 0;
+}
+
+.input-box label input:focus,
+.input-box label textarea:focus,
+.input-box label select:focus {
+  outline: none;
+  border-color: #333333;
+  box-shadow: 0 0 0 3px rgba(51, 51, 51, 0.1);
+}
+
+.input-box label textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.fine-print {
+  display: block;
+  font-size: 0.85rem;
+  color: #666666;
+  margin-top: 0.3rem;
+  font-weight: normal;
+}
+
+.input-box input[type="submit"] {
+  background: linear-gradient(135deg, #333333 0%, #555555 100%);
+  color: #ffffff;
+  padding: 0.875rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-top: 1rem;
+  display: inline-block;
+  min-width: fit-content;
+}
+
+.reveal-button {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  background-image: url("/images/site/eye_open.svg");
+  background-size: 1.2rem 1.2rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+  color: transparent;
+}
+
+.reveal-button:hover {
+  opacity: 0.7;
+}
+
+.reveal-button:focus {
+  outline: 2px solid #333333;
+  outline-offset: -4px;
+}
+
+.reveal-button.active {
+  background-image: url("/images/site/eye_closed.svg");
+}
+
+.input-box input[type="submit"]:hover,
+.input-box input[type="submit"]:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+  outline: none;
+}
+
+.input-box input[type="submit"]:active {
+  transform: translateY(0);
+}
+
+/* ---------- ERROR MESSAGES ---------- */
+.notice {
+  list-style: none;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  background-color: #fff3cd;
+  border-left: 4px solid #ffc107;
+  border-radius: 4px;
+  color: #856404;
+}
+
+.notice li {
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+}
+
+.notice li:before {
+  content: "⚠ ";
+  font-weight: bold;
+}
+
+@media screen and (min-width: 600px) {
+  .input-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .input-box h1 {
+    grid-column: 1 / -1;
+  }
+
+  .input-box label {
+    margin-bottom: 0;
+  }
+
+  .input-box input[type="submit"] {
+    grid-column: 1 / -1;
+    width: auto;
+    max-width: 200px;
+  }
+
+  .input-box .fine-print {
+    grid-column: 1 / -1;
+    margin-bottom: 1rem;
+    margin-top: 0.3rem;
+  }
+
+  .notice {
+    grid-column: 1 / -1;
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .management-container {
+    padding: 3rem;
+  }
+
+  .input-box {
+    padding: 3rem;
+  }
+
+  .input-box h1,
+  .management-container h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* ---------- ACCOUNT MANAGEMENT PAGE ---------- */
+.account-management {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.account-management h1 {
+  color: #1a1a1a;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  border-bottom: 3px solid #333333;
+  padding-bottom: 1rem;
+}
+
+.account-management h3 {
+  color: #333333;
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  margin-top: 2rem;
+}
+
+.account-management h3:first-of-type {
+  margin-top: 0;
+}
+
+.account-info-card {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border-left: 4px solid #333333;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+}
+
+.account-info-card h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+  font-size: 1.8rem;
+}
+
+.account-email {
+  color: #666666;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.account-actions {
+  margin-top: 2rem;
+}
+
+.action-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.action-list li {
+  margin: 0;
+}
+
+.action-link {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.action-link:hover,
+.action-link:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  outline: none;
+}
+
+.action-primary {
+  background: linear-gradient(135deg, #333333 0%, #555555 100%);
+}
+
+.action-primary:hover,
+.action-primary:focus {
+  background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+}
+
+.action-secondary {
+  background: linear-gradient(135deg, #555555 0%, #777777 100%);
+}
+
+.action-secondary:hover,
+.action-secondary:focus {
+  background: linear-gradient(135deg, #333333 0%, #555555 100%);
+}
+
+.action-icon {
+  display: inline-block;
+  margin-right: 0.75rem;
+  font-size: 1.3rem;
+}
+
+.action-text {
+  flex: 1;
+}
+
+@media screen and (min-width: 600px) {
+  .action-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .account-management h1 {
+    font-size: 2.2rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .account-management {
+    padding: 3rem;
+  }
+
+  .account-management h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .account-info-card {
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .action-link {
+    padding: 1.5rem 2rem;
+    font-size: 1.05rem;
+  }
+}
+
+/* ---------- ACCOUNT MANAGEMENT PAGE ---------- */
+.account-management {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.account-management h1 {
+  color: #1a1a1a;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  border-bottom: 3px solid #333333;
+  padding-bottom: 1rem;
+}
+
+.account-management h3 {
+  color: #333333;
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  margin-top: 2rem;
+}
+
+.account-management h3:first-of-type {
+  margin-top: 0;
+}
+
+.account-info-card {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border-left: 4px solid #333333;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+}
+
+.account-info-card h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+  font-size: 1.8rem;
+}
+
+.account-email {
+  color: #666666;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.account-actions {
+  margin-top: 2rem;
+}
+
+.action-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.action-list li {
+  margin: 0;
+}
+
+.action-link {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.action-link:hover,
+.action-link:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  outline: none;
+}
+
+.action-primary {
+  background: linear-gradient(135deg, #333333 0%, #555555 100%);
+}
+
+.action-primary:hover,
+.action-primary:focus {
+  background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+}
+
+.action-secondary {
+  background: linear-gradient(135deg, #555555 0%, #777777 100%);
+}
+
+.action-secondary:hover,
+.action-secondary:focus {
+  background: linear-gradient(135deg, #333333 0%, #555555 100%);
+}
+
+.action-icon {
+  display: inline-block;
+  margin-right: 0.75rem;
+  font-size: 1.3rem;
+}
+
+.action-text {
+  flex: 1;
+}
+
+@media screen and (min-width: 600px) {
+  .action-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .account-management h1 {
+    font-size: 2.2rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .account-management {
+    padding: 3rem;
+  }
+
+  .account-management h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .account-info-card {
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .action-link {
+    padding: 1.5rem 2rem;
+    font-size: 1.05rem;
   }
 }
